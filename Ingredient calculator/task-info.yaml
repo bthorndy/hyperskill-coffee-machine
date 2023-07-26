@@ -114,6 +114,12 @@ files:
         }
     }
   learner_created: false
+- name: src/machine/Main.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/33/stages/176/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 26 Jul 2023 20:54:20 UTC"
+record: 2
