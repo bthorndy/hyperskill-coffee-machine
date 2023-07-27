@@ -4,22 +4,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int cupsOfCoffee = 0;
-        System.out.println("Write how many cups of coffee you will need:");
+        Scanner scanner = new Scanner(System.in);
 
-        while (cupsOfCoffee <= 0) {
-            try (Scanner scanner = new Scanner(System.in)) {
-                cupsOfCoffee = scanner.nextInt();
-                if (cupsOfCoffee < 0) {
-                    throw new IllegalArgumentException();
-                }
-            } catch (Exception e) {
-                System.out.println("Input is invalid. Enter a positive integer.");
-            }
-        }
+        int waterAvailable = CoffeeMachine.collectInput(CoffeeInput.WATER.toString(), scanner);
+        int milkAvailable = CoffeeMachine.collectInput(CoffeeInput.MILK.toString(), scanner);
+        int coffeeAvailable = CoffeeMachine.collectInput(CoffeeInput.COFFEE_BEANS.toString(), scanner);
+        int cupsRequested = CoffeeMachine.collectInput("COFFEE", scanner);
 
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
-        coffeeMachine.ingredientsNeeded(cupsOfCoffee);
+        CoffeeMachine myMachine = new CoffeeMachine(waterAvailable, milkAvailable, coffeeAvailable);
 
+        myMachine.canMakeRequestedAmount(cupsRequested);
+        System.out.println();
+
+        scanner.close();
     }
+
 }
