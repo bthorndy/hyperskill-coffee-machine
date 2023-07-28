@@ -46,7 +46,13 @@ public class CoffeeMachine {
 
         while (beverage == null) {
             try {
-                selection = Integer.parseInt(scanner.nextLine());
+                String input = scanner.nextLine();
+
+                if (input.equals("back")) {
+                    return;
+                } else {
+                    selection = Integer.parseInt(input);
+                }
 
                 switch (selection) {
                     case 1 -> beverage = CoffeeDrink.ESPRESSO;
@@ -59,13 +65,26 @@ public class CoffeeMachine {
             }
         }
 
+        if (water < beverage.water) {
+            System.out.println("Sorry, not enough water!");
+            return;
+        } else if (milk < beverage.milk) {
+            System.out.println("Sorry, not enough milk!");
+            return;
+        } else if (beans < beverage.beans) {
+            System.out.println("Sorry, not enough beans!");
+            return;
+        } else if (cups < 1) {
+            System.out.println("Sorry, not enough cups!");
+        } else {
+            System.out.printf("I'm making you a coffee!");
+        }
+
         water = water - beverage.water;
         milk = milk - beverage.milk;
         beans = beans - beverage.beans;
         cups--;
         balance = balance + beverage.price;
-
-        displayStatus();
     }
 
     public void fillSupplies(Scanner scanner) {
@@ -81,14 +100,11 @@ public class CoffeeMachine {
 
         System.out.println("Write how many disposable cups you want to add:");
         cups = cups + Integer.parseInt(scanner.nextLine());
-
-        displayStatus();
     }
 
     public void takeCash(Scanner scanner) {
         System.out.printf("I gave you %.0f of money%n", balance);
         balance = 0;
-        displayStatus();
     }
 
 }
