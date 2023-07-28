@@ -5,18 +5,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        CoffeeMachine machine = new CoffeeMachine(400, 540, 120, 9, 550);
+        machine.displayStatus();
 
-        int waterAvailable = CoffeeMachine.collectInput(CoffeeInput.WATER.toString(), scanner);
-        int milkAvailable = CoffeeMachine.collectInput(CoffeeInput.MILK.toString(), scanner);
-        int coffeeAvailable = CoffeeMachine.collectInput(CoffeeInput.COFFEE_BEANS.toString(), scanner);
-        int cupsRequested = CoffeeMachine.collectInput("COFFEE", scanner);
+        System.out.println("Write action (buy, fill, take):");
+        String action = scanner.nextLine();
+        switch (action) {
+            case "buy" -> machine.buyCoffee(scanner);
+            case "fill" -> machine.fillSupplies(scanner);
+            case "take" -> machine.takeCash(scanner);
+            default -> System.out.println("Not a valid action.");
+        }
 
-        CoffeeMachine myMachine = new CoffeeMachine(waterAvailable, milkAvailable, coffeeAvailable);
 
-        myMachine.canMakeRequestedAmount(cupsRequested);
-        System.out.println();
 
-        scanner.close();
+
     }
 
 }

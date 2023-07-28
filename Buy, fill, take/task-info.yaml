@@ -360,35 +360,6 @@ files:
         }
     }
   learner_created: false
-- name: src/machine/CoffeeInput.java
-  visible: true
-  text: |
-    package machine;
-
-    public enum CoffeeInput {
-
-        COFFEE_BEANS(15, "g"),
-        MILK(50, "ml"),
-        WATER(200, "ml");
-
-
-        private int amountPerCup;
-        private final String units;
-
-        CoffeeInput(int amountPerCup, String units) {
-            this.amountPerCup = amountPerCup;
-            this.units = units;
-        }
-
-        public int amountPerCup() {
-            return amountPerCup;
-        }
-
-        public String units() {
-            return units;
-        }
-    }
-  learner_created: true
 - name: src/machine/Main.java
   visible: true
   text: |
@@ -415,6 +386,12 @@ files:
 
     }
   learner_created: true
+- name: src/machine/CoffeeDrink.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/33/stages/178/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 28 Jul 2023 20:55:51 UTC"
+record: 4
